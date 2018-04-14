@@ -1,0 +1,7 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: The intermediate directory (./../../intermediate/windows/vs/v141/Win32/Debug/) contains files shared from another project (gtest.vcxproj, gtest_main.vcxproj, gtest_unittest.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
+  gtest_prod_test.cc
+d:\manish\work\repos\github\googletest\googletest\test\gtest_prod_test.cc : fatal error C1041: cannot open program database 'D:\Manish\Work\repos\GitHub\googletest\googletest\intermediate\windows\vs\v141\Win32\Debug\vc141.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  production.cc
+d:\manish\work\repos\github\googletest\googletest\test\production.cc : fatal error C1041: cannot open program database 'D:\Manish\Work\repos\GitHub\googletest\googletest\intermediate\windows\vs\v141\Win32\Debug\vc141.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  Generating Code...
