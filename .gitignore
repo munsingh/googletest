@@ -42,3 +42,6 @@ googletest/output/
 googletest/intermediate
 googletest/msvc/2017/.vs/
 googletest/msvc/2015/.vs/
+/common.sh
+/common.sh.log
+/syncGoogleTestRepo.sh
