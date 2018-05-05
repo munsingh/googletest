@@ -6,6 +6,8 @@ image: Visual Studio 2017
 configuration:
 - Debug
 - Release
+- Debug_DLL
+- Release_DLL
 platform:
 - x64
 - Win32
