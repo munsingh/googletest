@@ -1,4 +1,0 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: The intermediate directory (./../../intermediate/windows/vs/v141/Win32/Debug/) contains files shared from another project (gtest.vcxproj, gtest_main.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  gtest_unittest.cc
-gtest.lib(gtest-all.obj) : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
-  gtest_unittest.vcxproj -> D:\Manish\Work\repos\GitHub\googletest\googletest\msvc\2017\./../../output/windows/vs/v141/Win32/Debug/gtest_unittest.exe
