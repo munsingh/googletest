@@ -38,6 +38,7 @@ googletest/m4/lt~obsolete.m4
 # Ignore generated directories.
 googlemock/fused-src/
 googletest/fused-src/
+
 googletest/output/
 googletest/intermediate
 googletest/msvc/2017/.vs/
@@ -45,3 +46,20 @@ googletest/msvc/2015/.vs/
 /common.sh
 /common.sh.log
 /syncGoogleTestRepo.sh
+
+# macOS files
+.DS_Store
+googletest/.DS_Store
+googletest/xcode/.DS_Store
+
+# Ignore cmake generated directories and files.
+CMakeFiles
+CTestTestfile.cmake
+Makefile
+cmake_install.cmake
+googlemock/CMakeFiles
+googlemock/CTestTestfile.cmake
+googlemock/Makefile
+googlemock/cmake_install.cmake
+googlemock/gtest
+

@@ -30,4 +30,4 @@ deploy:
   artifact: googletest_binaries_$(Configuration)_$(Platform)-$(appveyor_build_version),googletest_include-$(appveyor_build_version)
   draft: false
   prerelease: false
-  force_update: false
+force_update: false

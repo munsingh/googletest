@@ -30,12 +30,13 @@
 // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-//
-// Author: wan@google.com (Zhanyong Wan)
+
 
 // Google Mock - a framework for writing C++ mock classes.
 //
 // This file implements some commonly used variadic actions.
+
+// GOOGLETEST_CM0002 DO NOT DELETE
 
 #ifndef GMOCK_INCLUDE_GMOCK_GMOCK_GENERATED_ACTIONS_H_
 #define GMOCK_INCLUDE_GMOCK_GMOCK_GENERATED_ACTIONS_H_
@@ -53,273 +54,274 @@ template <typename Result, typename ArgumentTuple>
 class InvokeHelper;
 
 template <typename R>
-class InvokeHelper<R, ::testing::tuple<> > {
+class InvokeHelper<R, ::std::tuple<> > {
  public:
   template <typename Function>
-  static R Invoke(Function function, const ::testing::tuple<>&) {
+  static R Invoke(Function function, const ::std::tuple<>&) {
            return function();
   }
 
   template <class Class, typename MethodPtr>
   static R InvokeMethod(Class* obj_ptr,
                         MethodPtr method_ptr,
-                        const ::testing::tuple<>&) {
+                        const ::std::tuple<>&) {
            return (obj_ptr->*method_ptr)();
   }
 
   template <typename CallbackType>
   static R InvokeCallback(CallbackType* callback,
-                          const ::testing::tuple<>&) {
+                          const ::std::tuple<>&) {
            return callback->Run();
   }
 };
 
 template <typename R, typename A1>
-class InvokeHelper<R, ::testing::tuple<A1> > {
+class InvokeHelper<R, ::std::tuple<A1> > {
  public:
   template <typename Function>
-  static R Invoke(Function function, const ::testing::tuple<A1>& args) {
-           return function(get<0>(args));
+  static R Invoke(Function function, const ::std::tuple<A1>& args) {
+           return function(std::get<0>(args));
   }
 
   template <class Class, typename MethodPtr>
   static R InvokeMethod(Class* obj_ptr,
                         MethodPtr method_ptr,
-                        const ::testing::tuple<A1>& args) {
-           return (obj_ptr->*method_ptr)(get<0>(args));
+                        const ::std::tuple<A1>& args) {
+           return (obj_ptr->*method_ptr)(std::get<0>(args));
   }
 
   template <typename CallbackType>
   static R InvokeCallback(CallbackType* callback,
-                          const ::testing::tuple<A1>& args) {
-           return callback->Run(get<0>(args));
+                          const ::std::tuple<A1>& args) {
+           return callback->Run(std::get<0>(args));
   }
 };
 
 template <typename R, typename A1, typename A2>
-class InvokeHelper<R, ::testing::tuple<A1, A2> > {
+class InvokeHelper<R, ::std::tuple<A1, A2> > {
  public:
   template <typename Function>
-  static R Invoke(Function function, const ::testing::tuple<A1, A2>& args) {
-           return function(get<0>(args), get<1>(args));
+  static R Invoke(Function function, const ::std::tuple<A1, A2>& args) {
+           return function(std::get<0>(args), std::get<1>(args));
   }
 
   template <class Class, typename MethodPtr>
   static R InvokeMethod(Class* obj_ptr,
                         MethodPtr method_ptr,
-                        const ::testing::tuple<A1, A2>& args) {
-           return (obj_ptr->*method_ptr)(get<0>(args), get<1>(args));
+                        const ::std::tuple<A1, A2>& args) {
+           return (obj_ptr->*method_ptr)(std::get<0>(args), std::get<1>(args));
   }
 
   template <typename CallbackType>
   static R InvokeCallback(CallbackType* callback,
-                          const ::testing::tuple<A1, A2>& args) {
-           return callback->Run(get<0>(args), get<1>(args));
+                          const ::std::tuple<A1, A2>& args) {
+           return callback->Run(std::get<0>(args), std::get<1>(args));
   }
 };
 
 template <typename R, typename A1, typename A2, typename A3>
-class InvokeHelper<R, ::testing::tuple<A1, A2, A3> > {
+class InvokeHelper<R, ::std::tuple<A1, A2, A3> > {
  public:
   template <typename Function>
-  static R Invoke(Function function, const ::testing::tuple<A1, A2, A3>& args) {
-           return function(get<0>(args), get<1>(args), get<2>(args));
+  static R Invoke(Function function, const ::std::tuple<A1, A2, A3>& args) {
+           return function(std::get<0>(args), std::get<1>(args),
+               std::get<2>(args));
   }
 
   template <class Class, typename MethodPtr>
   static R InvokeMethod(Class* obj_ptr,
                         MethodPtr method_ptr,
-                        const ::testing::tuple<A1, A2, A3>& args) {
-           return (obj_ptr->*method_ptr)(get<0>(args), get<1>(args),
-               get<2>(args));
+                        const ::std::tuple<A1, A2, A3>& args) {
+           return (obj_ptr->*method_ptr)(std::get<0>(args), std::get<1>(args),
+               std::get<2>(args));
   }
 
   template <typename CallbackType>
   static R InvokeCallback(CallbackType* callback,
-                          const ::testing::tuple<A1, A2, A3>& args) {
-           return callback->Run(get<0>(args), get<1>(args), get<2>(args));
+                          const ::std::tuple<A1, A2, A3>& args) {
+           return callback->Run(std::get<0>(args), std::get<1>(args),
+               std::get<2>(args));
   }
 };
 
 template <typename R, typename A1, typename A2, typename A3, typename A4>
-class InvokeHelper<R, ::testing::tuple<A1, A2, A3, A4> > {
+class InvokeHelper<R, ::std::tuple<A1, A2, A3, A4> > {
  public:
   template <typename Function>
-  static R Invoke(Function function, const ::testing::tuple<A1, A2, A3,
-      A4>& args) {
-           return function(get<0>(args), get<1>(args), get<2>(args),
-               get<3>(args));
+  static R Invoke(Function function, const ::std::tuple<A1, A2, A3, A4>& args) {
+           return function(std::get<0>(args), std::get<1>(args),
+               std::get<2>(args), std::get<3>(args));
   }
 
   template <class Class, typename MethodPtr>
   static R InvokeMethod(Class* obj_ptr,
                         MethodPtr method_ptr,
-                        const ::testing::tuple<A1, A2, A3, A4>& args) {
-           return (obj_ptr->*method_ptr)(get<0>(args), get<1>(args),
-               get<2>(args), get<3>(args));
+                        const ::std::tuple<A1, A2, A3, A4>& args) {
+           return (obj_ptr->*method_ptr)(std::get<0>(args), std::get<1>(args),
+               std::get<2>(args), std::get<3>(args));
   }
 
   template <typename CallbackType>
   static R InvokeCallback(CallbackType* callback,
-                          const ::testing::tuple<A1, A2, A3, A4>& args) {
-           return callback->Run(get<0>(args), get<1>(args), get<2>(args),
-               get<3>(args));
+                          const ::std::tuple<A1, A2, A3, A4>& args) {
+           return callback->Run(std::get<0>(args), std::get<1>(args),
+               std::get<2>(args), std::get<3>(args));
   }
 };
 
 template <typename R, typename A1, typename A2, typename A3, typename A4,
     typename A5>
-class InvokeHelper<R, ::testing::tuple<A1, A2, A3, A4, A5> > {
+class InvokeHelper<R, ::std::tuple<A1, A2, A3, A4, A5> > {
  public:
   template <typename Function>
-  static R Invoke(Function function, const ::testing::tuple<A1, A2, A3, A4,
+  static R Invoke(Function function, const ::std::tuple<A1, A2, A3, A4,
       A5>& args) {
-           return function(get<0>(args), get<1>(args), get<2>(args),
-               get<3>(args), get<4>(args));
+           return function(std::get<0>(args), std::get<1>(args),
+               std::get<2>(args), std::get<3>(args), std::get<4>(args));
   }
 
   template <class Class, typename MethodPtr>
   static R InvokeMethod(Class* obj_ptr,
                         MethodPtr method_ptr,
-                        const ::testing::tuple<A1, A2, A3, A4, A5>& args) {
-           return (obj_ptr->*method_ptr)(get<0>(args), get<1>(args),
-               get<2>(args), get<3>(args), get<4>(args));
+                        const ::std::tuple<A1, A2, A3, A4, A5>& args) {
+           return (obj_ptr->*method_ptr)(std::get<0>(args), std::get<1>(args),
+               std::get<2>(args), std::get<3>(args), std::get<4>(args));
   }
 
   template <typename CallbackType>
   static R InvokeCallback(CallbackType* callback,
-                          const ::testing::tuple<A1, A2, A3, A4, A5>& args) {
-           return callback->Run(get<0>(args), get<1>(args), get<2>(args),
-               get<3>(args), get<4>(args));
+                          const ::std::tuple<A1, A2, A3, A4, A5>& args) {
+           return callback->Run(std::get<0>(args), std::get<1>(args),
+               std::get<2>(args), std::get<3>(args), std::get<4>(args));
   }
 };
 
 template <typename R, typename A1, typename A2, typename A3, typename A4,
     typename A5, typename A6>
-class InvokeHelper<R, ::testing::tuple<A1, A2, A3, A4, A5, A6> > {
+class InvokeHelper<R, ::std::tuple<A1, A2, A3, A4, A5, A6> > {
  public:
   template <typename Function>
-  static R Invoke(Function function, const ::testing::tuple<A1, A2, A3, A4, A5,
+  static R Invoke(Function function, const ::std::tuple<A1, A2, A3, A4, A5,
       A6>& args) {
-           return function(get<0>(args), get<1>(args), get<2>(args),
-               get<3>(args), get<4>(args), get<5>(args));
+           return function(std::get<0>(args), std::get<1>(args),
+               std::get<2>(args), std::get<3>(args), std::get<4>(args),
+               std::get<5>(args));
   }
 
   template <class Class, typename MethodPtr>
   static R InvokeMethod(Class* obj_ptr,
                         MethodPtr method_ptr,
-                        const ::testing::tuple<A1, A2, A3, A4, A5, A6>& args) {
-           return (obj_ptr->*method_ptr)(get<0>(args), get<1>(args),
-               get<2>(args), get<3>(args), get<4>(args), get<5>(args));
+                        const ::std::tuple<A1, A2, A3, A4, A5, A6>& args) {
+           return (obj_ptr->*method_ptr)(std::get<0>(args), std::get<1>(args),
+               std::get<2>(args), std::get<3>(args), std::get<4>(args),
+               std::get<5>(args));
   }
 
-  // There is no InvokeCallback() for 6-tuples, as google3 callbacks
-  // support 5 arguments at most.
+  // There is no InvokeCallback() for 6-tuples
 };
 
 template <typename R, typename A1, typename A2, typename A3, typename A4,
     typename A5, typename A6, typename A7>
-class InvokeHelper<R, ::testing::tuple<A1, A2, A3, A4, A5, A6, A7> > {
+class InvokeHelper<R, ::std::tuple<A1, A2, A3, A4, A5, A6, A7> > {
  public:
   template <typename Function>
-  static R Invoke(Function function, const ::testing::tuple<A1, A2, A3, A4, A5,
-      A6, A7>& args) {
-           return function(get<0>(args), get<1>(args), get<2>(args),
-               get<3>(args), get<4>(args), get<5>(args), get<6>(args));
+  static R Invoke(Function function, const ::std::tuple<A1, A2, A3, A4, A5, A6,
+      A7>& args) {
+           return function(std::get<0>(args), std::get<1>(args),
+               std::get<2>(args), std::get<3>(args), std::get<4>(args),
+               std::get<5>(args), std::get<6>(args));
   }
 
   template <class Class, typename MethodPtr>
   static R InvokeMethod(Class* obj_ptr,
                         MethodPtr method_ptr,
-                        const ::testing::tuple<A1, A2, A3, A4, A5, A6,
-                            A7>& args) {
-           return (obj_ptr->*method_ptr)(get<0>(args), get<1>(args),
-               get<2>(args), get<3>(args), get<4>(args), get<5>(args),
-               get<6>(args));
+                        const ::std::tuple<A1, A2, A3, A4, A5, A6, A7>& args) {
+           return (obj_ptr->*method_ptr)(std::get<0>(args), std::get<1>(args),
+               std::get<2>(args), std::get<3>(args), std::get<4>(args),
+               std::get<5>(args), std::get<6>(args));
   }
 
-  // There is no InvokeCallback() for 7-tuples, as google3 callbacks
-  // support 5 arguments at most.
+  // There is no InvokeCallback() for 7-tuples
 };
 
 template <typename R, typename A1, typename A2, typename A3, typename A4,
     typename A5, typename A6, typename A7, typename A8>
-class InvokeHelper<R, ::testing::tuple<A1, A2, A3, A4, A5, A6, A7, A8> > {
+class InvokeHelper<R, ::std::tuple<A1, A2, A3, A4, A5, A6, A7, A8> > {
  public:
   template <typename Function>
-  static R Invoke(Function function, const ::testing::tuple<A1, A2, A3, A4, A5,
-      A6, A7, A8>& args) {
-           return function(get<0>(args), get<1>(args), get<2>(args),
-               get<3>(args), get<4>(args), get<5>(args), get<6>(args),
-               get<7>(args));
+  static R Invoke(Function function, const ::std::tuple<A1, A2, A3, A4, A5, A6,
+      A7, A8>& args) {
+           return function(std::get<0>(args), std::get<1>(args),
+               std::get<2>(args), std::get<3>(args), std::get<4>(args),
+               std::get<5>(args), std::get<6>(args), std::get<7>(args));
   }
 
   template <class Class, typename MethodPtr>
   static R InvokeMethod(Class* obj_ptr,
                         MethodPtr method_ptr,
-                        const ::testing::tuple<A1, A2, A3, A4, A5, A6, A7,
+                        const ::std::tuple<A1, A2, A3, A4, A5, A6, A7,
                             A8>& args) {
-           return (obj_ptr->*method_ptr)(get<0>(args), get<1>(args),
-               get<2>(args), get<3>(args), get<4>(args), get<5>(args),
-               get<6>(args), get<7>(args));
+           return (obj_ptr->*method_ptr)(std::get<0>(args), std::get<1>(args),
+               std::get<2>(args), std::get<3>(args), std::get<4>(args),
+               std::get<5>(args), std::get<6>(args), std::get<7>(args));
   }
 
-  // There is no InvokeCallback() for 8-tuples, as google3 callbacks
-  // support 5 arguments at most.
+  // There is no InvokeCallback() for 8-tuples
 };
 
 template <typename R, typename A1, typename A2, typename A3, typename A4,
     typename A5, typename A6, typename A7, typename A8, typename A9>
-class InvokeHelper<R, ::testing::tuple<A1, A2, A3, A4, A5, A6, A7, A8, A9> > {
+class InvokeHelper<R, ::std::tuple<A1, A2, A3, A4, A5, A6, A7, A8, A9> > {
  public:
   template <typename Function>
-  static R Invoke(Function function, const ::testing::tuple<A1, A2, A3, A4, A5,
-      A6, A7, A8, A9>& args) {
-           return function(get<0>(args), get<1>(args), get<2>(args),
-               get<3>(args), get<4>(args), get<5>(args), get<6>(args),
-               get<7>(args), get<8>(args));
+  static R Invoke(Function function, const ::std::tuple<A1, A2, A3, A4, A5, A6,
+      A7, A8, A9>& args) {
+           return function(std::get<0>(args), std::get<1>(args),
+               std::get<2>(args), std::get<3>(args), std::get<4>(args),
+               std::get<5>(args), std::get<6>(args), std::get<7>(args),
+               std::get<8>(args));
   }
 
   template <class Class, typename MethodPtr>
   static R InvokeMethod(Class* obj_ptr,
                         MethodPtr method_ptr,
-                        const ::testing::tuple<A1, A2, A3, A4, A5, A6, A7, A8,
+                        const ::std::tuple<A1, A2, A3, A4, A5, A6, A7, A8,
                             A9>& args) {
-           return (obj_ptr->*method_ptr)(get<0>(args), get<1>(args),
-               get<2>(args), get<3>(args), get<4>(args), get<5>(args),
-               get<6>(args), get<7>(args), get<8>(args));
+           return (obj_ptr->*method_ptr)(std::get<0>(args), std::get<1>(args),
+               std::get<2>(args), std::get<3>(args), std::get<4>(args),
+               std::get<5>(args), std::get<6>(args), std::get<7>(args),
+               std::get<8>(args));
   }
 
-  // There is no InvokeCallback() for 9-tuples, as google3 callbacks
-  // support 5 arguments at most.
+  // There is no InvokeCallback() for 9-tuples
 };
 
 template <typename R, typename A1, typename A2, typename A3, typename A4,
     typename A5, typename A6, typename A7, typename A8, typename A9,
     typename A10>
-class InvokeHelper<R, ::testing::tuple<A1, A2, A3, A4, A5, A6, A7, A8, A9,
-    A10> > {
+class InvokeHelper<R, ::std::tuple<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10> > {
  public:
   template <typename Function>
-  static R Invoke(Function function, const ::testing::tuple<A1, A2, A3, A4, A5,
-      A6, A7, A8, A9, A10>& args) {
-           return function(get<0>(args), get<1>(args), get<2>(args),
-               get<3>(args), get<4>(args), get<5>(args), get<6>(args),
-               get<7>(args), get<8>(args), get<9>(args));
+  static R Invoke(Function function, const ::std::tuple<A1, A2, A3, A4, A5, A6,
+      A7, A8, A9, A10>& args) {
+           return function(std::get<0>(args), std::get<1>(args),
+               std::get<2>(args), std::get<3>(args), std::get<4>(args),
+               std::get<5>(args), std::get<6>(args), std::get<7>(args),
+               std::get<8>(args), std::get<9>(args));
   }
 
   template <class Class, typename MethodPtr>
   static R InvokeMethod(Class* obj_ptr,
                         MethodPtr method_ptr,
-                        const ::testing::tuple<A1, A2, A3, A4, A5, A6, A7, A8,
-                            A9, A10>& args) {
-           return (obj_ptr->*method_ptr)(get<0>(args), get<1>(args),
-               get<2>(args), get<3>(args), get<4>(args), get<5>(args),
-               get<6>(args), get<7>(args), get<8>(args), get<9>(args));
+                        const ::std::tuple<A1, A2, A3, A4, A5, A6, A7, A8, A9,
+                            A10>& args) {
+           return (obj_ptr->*method_ptr)(std::get<0>(args), std::get<1>(args),
+               std::get<2>(args), std::get<3>(args), std::get<4>(args),
+               std::get<5>(args), std::get<6>(args), std::get<7>(args),
+               std::get<8>(args), std::get<9>(args));
   }
 
-  // There is no InvokeCallback() for 10-tuples, as google3 callbacks
-  // support 5 arguments at most.
+  // There is no InvokeCallback() for 10-tuples
 };
 
 // Implements the Invoke(callback) action.
@@ -350,20 +352,20 @@ class InvokeCallbackAction {
 // An INTERNAL macro for extracting the type of a tuple field.  It's
 // subject to change without notice - DO NOT USE IN USER CODE!
 #define GMOCK_FIELD_(Tuple, N) \
-    typename ::testing::tuple_element<N, Tuple>::type
+    typename ::std::tuple_element<N, Tuple>::type
 
 // SelectArgs<Result, ArgumentTuple, k1, k2, ..., k_n>::type is the
 // type of an n-ary function whose i-th (1-based) argument type is the
 // k{i}-th (0-based) field of ArgumentTuple, which must be a tuple
 // type, and whose return type is Result.  For example,
-//   SelectArgs<int, ::testing::tuple<bool, char, double, long>, 0, 3>::type
+//   SelectArgs<int, ::std::tuple<bool, char, double, long>, 0, 3>::type
 // is int(bool, long).
 //
 // SelectArgs<Result, ArgumentTuple, k1, k2, ..., k_n>::Select(args)
 // returns the selected fields (k1, k2, ..., k_n) of args as a tuple.
 // For example,
-//   SelectArgs<int, tuple<bool, char, double>, 2, 0>::Select(
-//       ::testing::make_tuple(true, 'a', 2.5))
+//   SelectArgs<int, std::tuple<bool, char, double>, 2, 0>::Select(
+//       ::std::make_tuple(true, 'a', 2.5))
 // returns tuple (2.5, true).
 //
 // The numbers in list k1, k2, ..., k_n must be >= 0, where n can be
@@ -382,9 +384,10 @@ class SelectArgs {
       GMOCK_FIELD_(ArgumentTuple, k10));
   typedef typename Function<type>::ArgumentTuple SelectedArgs;
   static SelectedArgs Select(const ArgumentTuple& args) {
-    return SelectedArgs(get<k1>(args), get<k2>(args), get<k3>(args),
-        get<k4>(args), get<k5>(args), get<k6>(args), get<k7>(args),
-        get<k8>(args), get<k9>(args), get<k10>(args));
+    return SelectedArgs(std::get<k1>(args), std::get<k2>(args),
+        std::get<k3>(args), std::get<k4>(args), std::get<k5>(args),
+        std::get<k6>(args), std::get<k7>(args), std::get<k8>(args),
+        std::get<k9>(args), std::get<k10>(args));
   }
 };
 
@@ -406,7 +409,7 @@ class SelectArgs<Result, ArgumentTuple,
   typedef Result type(GMOCK_FIELD_(ArgumentTuple, k1));
   typedef typename Function<type>::ArgumentTuple SelectedArgs;
   static SelectedArgs Select(const ArgumentTuple& args) {
-    return SelectedArgs(get<k1>(args));
+    return SelectedArgs(std::get<k1>(args));
   }
 };
 
@@ -418,7 +421,7 @@ class SelectArgs<Result, ArgumentTuple,
       GMOCK_FIELD_(ArgumentTuple, k2));
   typedef typename Function<type>::ArgumentTuple SelectedArgs;
   static SelectedArgs Select(const ArgumentTuple& args) {
-    return SelectedArgs(get<k1>(args), get<k2>(args));
+    return SelectedArgs(std::get<k1>(args), std::get<k2>(args));
   }
 };
 
@@ -430,7 +433,8 @@ class SelectArgs<Result, ArgumentTuple,
       GMOCK_FIELD_(ArgumentTuple, k2), GMOCK_FIELD_(ArgumentTuple, k3));
   typedef typename Function<type>::ArgumentTuple SelectedArgs;
   static SelectedArgs Select(const ArgumentTuple& args) {
-    return SelectedArgs(get<k1>(args), get<k2>(args), get<k3>(args));
+    return SelectedArgs(std::get<k1>(args), std::get<k2>(args),
+        std::get<k3>(args));
   }
 };
 
@@ -444,8 +448,8 @@ class SelectArgs<Result, ArgumentTuple,
       GMOCK_FIELD_(ArgumentTuple, k4));
   typedef typename Function<type>::ArgumentTuple SelectedArgs;
   static SelectedArgs Select(const ArgumentTuple& args) {
-    return SelectedArgs(get<k1>(args), get<k2>(args), get<k3>(args),
-        get<k4>(args));
+    return SelectedArgs(std::get<k1>(args), std::get<k2>(args),
+        std::get<k3>(args), std::get<k4>(args));
   }
 };
 
@@ -459,8 +463,8 @@ class SelectArgs<Result, ArgumentTuple,
       GMOCK_FIELD_(ArgumentTuple, k4), GMOCK_FIELD_(ArgumentTuple, k5));
   typedef typename Function<type>::ArgumentTuple SelectedArgs;
   static SelectedArgs Select(const ArgumentTuple& args) {
-    return SelectedArgs(get<k1>(args), get<k2>(args), get<k3>(args),
-        get<k4>(args), get<k5>(args));
+    return SelectedArgs(std::get<k1>(args), std::get<k2>(args),
+        std::get<k3>(args), std::get<k4>(args), std::get<k5>(args));
   }
 };
 
@@ -475,8 +479,9 @@ class SelectArgs<Result, ArgumentTuple,
       GMOCK_FIELD_(ArgumentTuple, k6));
   typedef typename Function<type>::ArgumentTuple SelectedArgs;
   static SelectedArgs Select(const ArgumentTuple& args) {
-    return SelectedArgs(get<k1>(args), get<k2>(args), get<k3>(args),
-        get<k4>(args), get<k5>(args), get<k6>(args));
+    return SelectedArgs(std::get<k1>(args), std::get<k2>(args),
+        std::get<k3>(args), std::get<k4>(args), std::get<k5>(args),
+        std::get<k6>(args));
   }
 };
 
@@ -491,8 +496,9 @@ class SelectArgs<Result, ArgumentTuple,
       GMOCK_FIELD_(ArgumentTuple, k6), GMOCK_FIELD_(ArgumentTuple, k7));
   typedef typename Function<type>::ArgumentTuple SelectedArgs;
   static SelectedArgs Select(const ArgumentTuple& args) {
-    return SelectedArgs(get<k1>(args), get<k2>(args), get<k3>(args),
-        get<k4>(args), get<k5>(args), get<k6>(args), get<k7>(args));
+    return SelectedArgs(std::get<k1>(args), std::get<k2>(args),
+        std::get<k3>(args), std::get<k4>(args), std::get<k5>(args),
+        std::get<k6>(args), std::get<k7>(args));
   }
 };
 
@@ -508,9 +514,9 @@ class SelectArgs<Result, ArgumentTuple,
       GMOCK_FIELD_(ArgumentTuple, k8));
   typedef typename Function<type>::ArgumentTuple SelectedArgs;
   static SelectedArgs Select(const ArgumentTuple& args) {
-    return SelectedArgs(get<k1>(args), get<k2>(args), get<k3>(args),
-        get<k4>(args), get<k5>(args), get<k6>(args), get<k7>(args),
-        get<k8>(args));
+    return SelectedArgs(std::get<k1>(args), std::get<k2>(args),
+        std::get<k3>(args), std::get<k4>(args), std::get<k5>(args),
+        std::get<k6>(args), std::get<k7>(args), std::get<k8>(args));
   }
 };
 
@@ -526,9 +532,10 @@ class SelectArgs<Result, ArgumentTuple,
       GMOCK_FIELD_(ArgumentTuple, k8), GMOCK_FIELD_(ArgumentTuple, k9));
   typedef typename Function<type>::ArgumentTuple SelectedArgs;
   static SelectedArgs Select(const ArgumentTuple& args) {
-    return SelectedArgs(get<k1>(args), get<k2>(args), get<k3>(args),
-        get<k4>(args), get<k5>(args), get<k6>(args), get<k7>(args),
-        get<k8>(args), get<k9>(args));
+    return SelectedArgs(std::get<k1>(args), std::get<k2>(args),
+        std::get<k3>(args), std::get<k4>(args), std::get<k5>(args),
+        std::get<k6>(args), std::get<k7>(args), std::get<k8>(args),
+        std::get<k9>(args));
   }
 };
 
@@ -591,7 +598,7 @@ struct ExcessiveArg {};
 template <typename Result, class Impl>
 class ActionHelper {
  public:
-  static Result Perform(Impl* impl, const ::testing::tuple<>& args) {
+  static Result Perform(Impl* impl, const ::std::tuple<>& args) {
     return impl->template gmock_PerformImpl<>(args, ExcessiveArg(),
         ExcessiveArg(), ExcessiveArg(), ExcessiveArg(), ExcessiveArg(),
         ExcessiveArg(), ExcessiveArg(), ExcessiveArg(), ExcessiveArg(),
@@ -599,95 +606,96 @@ class ActionHelper {
   }
 
   template <typename A0>
-  static Result Perform(Impl* impl, const ::testing::tuple<A0>& args) {
-    return impl->template gmock_PerformImpl<A0>(args, get<0>(args),
+  static Result Perform(Impl* impl, const ::std::tuple<A0>& args) {
+    return impl->template gmock_PerformImpl<A0>(args, std::get<0>(args),
         ExcessiveArg(), ExcessiveArg(), ExcessiveArg(), ExcessiveArg(),
         ExcessiveArg(), ExcessiveArg(), ExcessiveArg(), ExcessiveArg(),
         ExcessiveArg());
   }
 
   template <typename A0, typename A1>
-  static Result Perform(Impl* impl, const ::testing::tuple<A0, A1>& args) {
-    return impl->template gmock_PerformImpl<A0, A1>(args, get<0>(args),
-        get<1>(args), ExcessiveArg(), ExcessiveArg(), ExcessiveArg(),
+  static Result Perform(Impl* impl, const ::std::tuple<A0, A1>& args) {
+    return impl->template gmock_PerformImpl<A0, A1>(args, std::get<0>(args),
+        std::get<1>(args), ExcessiveArg(), ExcessiveArg(), ExcessiveArg(),
         ExcessiveArg(), ExcessiveArg(), ExcessiveArg(), ExcessiveArg(),
         ExcessiveArg());
   }
 
   template <typename A0, typename A1, typename A2>
-  static Result Perform(Impl* impl, const ::testing::tuple<A0, A1, A2>& args) {
-    return impl->template gmock_PerformImpl<A0, A1, A2>(args, get<0>(args),
-        get<1>(args), get<2>(args), ExcessiveArg(), ExcessiveArg(),
+  static Result Perform(Impl* impl, const ::std::tuple<A0, A1, A2>& args) {
+    return impl->template gmock_PerformImpl<A0, A1, A2>(args,
+        std::get<0>(args), std::get<1>(args), std::get<2>(args),
         ExcessiveArg(), ExcessiveArg(), ExcessiveArg(), ExcessiveArg(),
-        ExcessiveArg());
+        ExcessiveArg(), ExcessiveArg(), ExcessiveArg());
   }
 
   template <typename A0, typename A1, typename A2, typename A3>
-  static Result Perform(Impl* impl, const ::testing::tuple<A0, A1, A2,
-      A3>& args) {
-    return impl->template gmock_PerformImpl<A0, A1, A2, A3>(args, get<0>(args),
-        get<1>(args), get<2>(args), get<3>(args), ExcessiveArg(),
-        ExcessiveArg(), ExcessiveArg(), ExcessiveArg(), ExcessiveArg(),
-        ExcessiveArg());
+  static Result Perform(Impl* impl, const ::std::tuple<A0, A1, A2, A3>& args) {
+    return impl->template gmock_PerformImpl<A0, A1, A2, A3>(args,
+        std::get<0>(args), std::get<1>(args), std::get<2>(args),
+        std::get<3>(args), ExcessiveArg(), ExcessiveArg(), ExcessiveArg(),
+        ExcessiveArg(), ExcessiveArg(), ExcessiveArg());
   }
 
   template <typename A0, typename A1, typename A2, typename A3, typename A4>
-  static Result Perform(Impl* impl, const ::testing::tuple<A0, A1, A2, A3,
+  static Result Perform(Impl* impl, const ::std::tuple<A0, A1, A2, A3,
       A4>& args) {
     return impl->template gmock_PerformImpl<A0, A1, A2, A3, A4>(args,
-        get<0>(args), get<1>(args), get<2>(args), get<3>(args), get<4>(args),
-        ExcessiveArg(), ExcessiveArg(), ExcessiveArg(), ExcessiveArg(),
-        ExcessiveArg());
+        std::get<0>(args), std::get<1>(args), std::get<2>(args),
+        std::get<3>(args), std::get<4>(args), ExcessiveArg(), ExcessiveArg(),
+        ExcessiveArg(), ExcessiveArg(), ExcessiveArg());
   }
 
   template <typename A0, typename A1, typename A2, typename A3, typename A4,
       typename A5>
-  static Result Perform(Impl* impl, const ::testing::tuple<A0, A1, A2, A3, A4,
+  static Result Perform(Impl* impl, const ::std::tuple<A0, A1, A2, A3, A4,
       A5>& args) {
     return impl->template gmock_PerformImpl<A0, A1, A2, A3, A4, A5>(args,
-        get<0>(args), get<1>(args), get<2>(args), get<3>(args), get<4>(args),
-        get<5>(args), ExcessiveArg(), ExcessiveArg(), ExcessiveArg(),
-        ExcessiveArg());
+        std::get<0>(args), std::get<1>(args), std::get<2>(args),
+        std::get<3>(args), std::get<4>(args), std::get<5>(args),
+        ExcessiveArg(), ExcessiveArg(), ExcessiveArg(), ExcessiveArg());
   }
 
   template <typename A0, typename A1, typename A2, typename A3, typename A4,
       typename A5, typename A6>
-  static Result Perform(Impl* impl, const ::testing::tuple<A0, A1, A2, A3, A4,
-      A5, A6>& args) {
+  static Result Perform(Impl* impl, const ::std::tuple<A0, A1, A2, A3, A4, A5,
+      A6>& args) {
     return impl->template gmock_PerformImpl<A0, A1, A2, A3, A4, A5, A6>(args,
-        get<0>(args), get<1>(args), get<2>(args), get<3>(args), get<4>(args),
-        get<5>(args), get<6>(args), ExcessiveArg(), ExcessiveArg(),
-        ExcessiveArg());
+        std::get<0>(args), std::get<1>(args), std::get<2>(args),
+        std::get<3>(args), std::get<4>(args), std::get<5>(args),
+        std::get<6>(args), ExcessiveArg(), ExcessiveArg(), ExcessiveArg());
   }
 
   template <typename A0, typename A1, typename A2, typename A3, typename A4,
       typename A5, typename A6, typename A7>
-  static Result Perform(Impl* impl, const ::testing::tuple<A0, A1, A2, A3, A4,
-      A5, A6, A7>& args) {
+  static Result Perform(Impl* impl, const ::std::tuple<A0, A1, A2, A3, A4, A5,
+      A6, A7>& args) {
     return impl->template gmock_PerformImpl<A0, A1, A2, A3, A4, A5, A6,
-        A7>(args, get<0>(args), get<1>(args), get<2>(args), get<3>(args),
-        get<4>(args), get<5>(args), get<6>(args), get<7>(args), ExcessiveArg(),
-        ExcessiveArg());
+        A7>(args, std::get<0>(args), std::get<1>(args), std::get<2>(args),
+        std::get<3>(args), std::get<4>(args), std::get<5>(args),
+        std::get<6>(args), std::get<7>(args), ExcessiveArg(), ExcessiveArg());
   }
 
   template <typename A0, typename A1, typename A2, typename A3, typename A4,
       typename A5, typename A6, typename A7, typename A8>
-  static Result Perform(Impl* impl, const ::testing::tuple<A0, A1, A2, A3, A4,
-      A5, A6, A7, A8>& args) {
+  static Result Perform(Impl* impl, const ::std::tuple<A0, A1, A2, A3, A4, A5,
+      A6, A7, A8>& args) {
     return impl->template gmock_PerformImpl<A0, A1, A2, A3, A4, A5, A6, A7,
-        A8>(args, get<0>(args), get<1>(args), get<2>(args), get<3>(args),
-        get<4>(args), get<5>(args), get<6>(args), get<7>(args), get<8>(args),
+        A8>(args, std::get<0>(args), std::get<1>(args), std::get<2>(args),
+        std::get<3>(args), std::get<4>(args), std::get<5>(args),
+        std::get<6>(args), std::get<7>(args), std::get<8>(args),
         ExcessiveArg());
   }
 
   template <typename A0, typename A1, typename A2, typename A3, typename A4,
       typename A5, typename A6, typename A7, typename A8, typename A9>
-  static Result Perform(Impl* impl, const ::testing::tuple<A0, A1, A2, A3, A4,
-      A5, A6, A7, A8, A9>& args) {
+  static Result Perform(Impl* impl, const ::std::tuple<A0, A1, A2, A3, A4, A5,
+      A6, A7, A8, A9>& args) {
     return impl->template gmock_PerformImpl<A0, A1, A2, A3, A4, A5, A6, A7, A8,
-        A9>(args, get<0>(args), get<1>(args), get<2>(args), get<3>(args),
-        get<4>(args), get<5>(args), get<6>(args), get<7>(args), get<8>(args),
-        get<9>(args));
+        A9>(args, std::get<0>(args), std::get<1>(args), std::get<2>(args),
+        std::get<3>(args), std::get<4>(args), std::get<5>(args),
+        std::get<6>(args), std::get<7>(args), std::get<8>(args),
+        std::get<9>(args));
   }
 };
 
@@ -954,8 +962,8 @@ DoAll(Action1 a1, Action2 a2, Action3 a3, Action4 a4, Action5 a5, Action6 a6,
 //
 // MORE INFORMATION:
 //
-// To learn more about using these macros, please search for 'ACTION'
-// on https://github.com/google/googletest/blob/master/googlemock/docs/CookBook.md
+// To learn more about using these macros, please search for 'ACTION' on
+// https://github.com/google/googletest/blob/master/googlemock/docs/CookBook.md
 
 // An internal macro needed for implementing ACTION*().
 #define GMOCK_ACTION_ARG_TYPES_AND_NAMES_UNUSED_\
@@ -995,7 +1003,7 @@ DoAll(Action1 a1, Action2 a2, Action3 a3, Action4 a4, Action5 a5, Action6 a6,
 //   ACTION_TEMPLATE(DuplicateArg,
 //                   HAS_2_TEMPLATE_PARAMS(int, k, typename, T),
 //                   AND_1_VALUE_PARAMS(output)) {
-//     *output = T(::testing::get<k>(args));
+//     *output = T(::std::get<k>(args));
 //   }
 //   ...
 //     int n;
@@ -2393,7 +2401,7 @@ ACTION_TEMPLATE(InvokeArgument,
   using internal::invoke_argument::InvokeArgumentAdl;
   return InvokeArgumentAdl<return_type>(
       internal::invoke_argument::AdlTag(),
-      ::testing::get<k>(args));
+      ::std::get<k>(args));
 }
 
 ACTION_TEMPLATE(InvokeArgument,
@@ -2402,7 +2410,7 @@ ACTION_TEMPLATE(InvokeArgument,
   using internal::invoke_argument::InvokeArgumentAdl;
   return InvokeArgumentAdl<return_type>(
       internal::invoke_argument::AdlTag(),
-      ::testing::get<k>(args), p0);
+      ::std::get<k>(args), p0);
 }
 
 ACTION_TEMPLATE(InvokeArgument,
@@ -2411,7 +2419,7 @@ ACTION_TEMPLATE(InvokeArgument,
   using internal::invoke_argument::InvokeArgumentAdl;
   return InvokeArgumentAdl<return_type>(
       internal::invoke_argument::AdlTag(),
-      ::testing::get<k>(args), p0, p1);
+      ::std::get<k>(args), p0, p1);
 }
 
 ACTION_TEMPLATE(InvokeArgument,
@@ -2420,7 +2428,7 @@ ACTION_TEMPLATE(InvokeArgument,
   using internal::invoke_argument::InvokeArgumentAdl;
   return InvokeArgumentAdl<return_type>(
       internal::invoke_argument::AdlTag(),
-      ::testing::get<k>(args), p0, p1, p2);
+      ::std::get<k>(args), p0, p1, p2);
 }
 
 ACTION_TEMPLATE(InvokeArgument,
@@ -2429,7 +2437,7 @@ ACTION_TEMPLATE(InvokeArgument,
   using internal::invoke_argument::InvokeArgumentAdl;
   return InvokeArgumentAdl<return_type>(
       internal::invoke_argument::AdlTag(),
-      ::testing::get<k>(args), p0, p1, p2, p3);
+      ::std::get<k>(args), p0, p1, p2, p3);
 }
 
 ACTION_TEMPLATE(InvokeArgument,
@@ -2438,7 +2446,7 @@ ACTION_TEMPLATE(InvokeArgument,
   using internal::invoke_argument::InvokeArgumentAdl;
   return InvokeArgumentAdl<return_type>(
       internal::invoke_argument::AdlTag(),
-      ::testing::get<k>(args), p0, p1, p2, p3, p4);
+      ::std::get<k>(args), p0, p1, p2, p3, p4);
 }
 
 ACTION_TEMPLATE(InvokeArgument,
@@ -2447,7 +2455,7 @@ ACTION_TEMPLATE(InvokeArgument,
   using internal::invoke_argument::InvokeArgumentAdl;
   return InvokeArgumentAdl<return_type>(
       internal::invoke_argument::AdlTag(),
-      ::testing::get<k>(args), p0, p1, p2, p3, p4, p5);
+      ::std::get<k>(args), p0, p1, p2, p3, p4, p5);
 }
 
 ACTION_TEMPLATE(InvokeArgument,
@@ -2456,7 +2464,7 @@ ACTION_TEMPLATE(InvokeArgument,
   using internal::invoke_argument::InvokeArgumentAdl;
   return InvokeArgumentAdl<return_type>(
       internal::invoke_argument::AdlTag(),
-      ::testing::get<k>(args), p0, p1, p2, p3, p4, p5, p6);
+      ::std::get<k>(args), p0, p1, p2, p3, p4, p5, p6);
 }
 
 ACTION_TEMPLATE(InvokeArgument,
@@ -2465,7 +2473,7 @@ ACTION_TEMPLATE(InvokeArgument,
   using internal::invoke_argument::InvokeArgumentAdl;
   return InvokeArgumentAdl<return_type>(
       internal::invoke_argument::AdlTag(),
-      ::testing::get<k>(args), p0, p1, p2, p3, p4, p5, p6, p7);
+      ::std::get<k>(args), p0, p1, p2, p3, p4, p5, p6, p7);
 }
 
 ACTION_TEMPLATE(InvokeArgument,
@@ -2474,7 +2482,7 @@ ACTION_TEMPLATE(InvokeArgument,
   using internal::invoke_argument::InvokeArgumentAdl;
   return InvokeArgumentAdl<return_type>(
       internal::invoke_argument::AdlTag(),
-      ::testing::get<k>(args), p0, p1, p2, p3, p4, p5, p6, p7, p8);
+      ::std::get<k>(args), p0, p1, p2, p3, p4, p5, p6, p7, p8);
 }
 
 ACTION_TEMPLATE(InvokeArgument,
@@ -2483,7 +2491,7 @@ ACTION_TEMPLATE(InvokeArgument,
   using internal::invoke_argument::InvokeArgumentAdl;
   return InvokeArgumentAdl<return_type>(
       internal::invoke_argument::AdlTag(),
-      ::testing::get<k>(args), p0, p1, p2, p3, p4, p5, p6, p7, p8, p9);
+      ::std::get<k>(args), p0, p1, p2, p3, p4, p5, p6, p7, p8, p9);
 }
 
 // Various overloads for ReturnNew<T>().

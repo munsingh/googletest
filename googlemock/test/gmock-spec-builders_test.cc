@@ -26,8 +26,7 @@
 // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-//
-// Author: wan@google.com (Zhanyong Wan)
+
 
 // Google Mock - a framework for writing C++ mock classes.
 //
@@ -1176,7 +1175,7 @@ TEST(UnexpectedCallTest, UnsatisifiedPrerequisites) {
 TEST(UndefinedReturnValueTest,
      ReturnValueIsMandatoryWhenNotDefaultConstructible) {
   MockA a;
-  // TODO(wan@google.com): We should really verify the output message,
+  // FIXME: We should really verify the output message,
   // but we cannot yet due to that EXPECT_DEATH only captures stderr
   // while Google Mock logs to stdout.
 #if GTEST_HAS_EXCEPTIONS
@@ -2042,7 +2041,7 @@ TEST(FunctionCallMessageTest,
   GMOCK_FLAG(verbose) = kWarningVerbosity;
   NaggyMock<MockC> c;
   CaptureStdout();
-  c.VoidMethod(false, 5, "Hi", NULL, Printable(), Unprintable());
+  c.VoidMethod(false, 5, "Hi", nullptr, Printable(), Unprintable());
   const std::string output = GetCapturedStdout();
   EXPECT_PRED_FORMAT2(IsSubstring, "GMOCK WARNING", output);
   EXPECT_PRED_FORMAT2(IsNotSubstring, "Stack trace:", output);
@@ -2056,7 +2055,7 @@ TEST(FunctionCallMessageTest,
   GMOCK_FLAG(verbose) = kInfoVerbosity;
   NaggyMock<MockC> c;
   CaptureStdout();
-  c.VoidMethod(false, 5, "Hi", NULL, Printable(), Unprintable());
+  c.VoidMethod(false, 5, "Hi", nullptr, Printable(), Unprintable());
   const std::string output = GetCapturedStdout();
   EXPECT_PRED_FORMAT2(IsSubstring, "GMOCK WARNING", output);
   EXPECT_PRED_FORMAT2(IsSubstring, "Stack trace:", output);
@@ -2099,7 +2098,7 @@ TEST(FunctionCallMessageTest,
   // A void mock function.
   NaggyMock<MockC> c;
   CaptureStdout();
-  c.VoidMethod(false, 5, "Hi", NULL, Printable(), Unprintable());
+  c.VoidMethod(false, 5, "Hi", nullptr, Printable(), Unprintable());
   const std::string output2 = GetCapturedStdout();
   EXPECT_THAT(output2.c_str(),
               ContainsRegex(

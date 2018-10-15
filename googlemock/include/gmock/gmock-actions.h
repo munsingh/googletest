@@ -26,12 +26,13 @@
 // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-//
-// Author: wan@google.com (Zhanyong Wan)
+
 
 // Google Mock - a framework for writing C++ mock classes.
 //
 // This file implements some commonly used actions.
+
+// GOOGLETEST_CM0002 DO NOT DELETE
 
 #ifndef GMOCK_INCLUDE_GMOCK_GMOCK_ACTIONS_H_
 #define GMOCK_INCLUDE_GMOCK_GMOCK_ACTIONS_H_
@@ -136,7 +137,7 @@ template <typename T>
 class BuiltInDefaultValue<T*> {
  public:
   static bool Exists() { return true; }
-  static T* Get() { return NULL; }
+  static T* Get() { return nullptr; }
 };
 
 // The following specializations define the default values for
@@ -219,11 +220,11 @@ class DefaultValue {
   // Unsets the default value for type T.
   static void Clear() {
     delete producer_;
-    producer_ = NULL;
+    producer_ = nullptr;
   }
 
   // Returns true iff the user has set the default value for type T.
-  static bool IsSet() { return producer_ != NULL; }
+  static bool IsSet() { return producer_ != nullptr; }
 
   // Returns true if T has a default return value set by the user or there
   // exists a built-in default value.
@@ -235,8 +236,8 @@ class DefaultValue {
   // otherwise returns the built-in default value. Requires that Exists()
   // is true, which ensures that the return value is well-defined.
   static T Get() {
-    return producer_ == NULL ?
-        internal::BuiltInDefaultValue<T>::Get() : producer_->Produce();
+    return producer_ == nullptr ? internal::BuiltInDefaultValue<T>::Get()
+                                : producer_->Produce();
   }
 
  private:
@@ -281,12 +282,10 @@ class DefaultValue<T&> {
   }
 
   // Unsets the default value for type T&.
-  static void Clear() {
-    address_ = NULL;
-  }
+  static void Clear() { address_ = nullptr; }
 
   // Returns true iff the user has set the default value for type T&.
-  static bool IsSet() { return address_ != NULL; }
+  static bool IsSet() { return address_ != nullptr; }
 
   // Returns true if T has a default return value set by the user or there
   // exists a built-in default value.
@@ -298,8 +297,8 @@ class DefaultValue<T&> {
   // otherwise returns the built-in default value if there is one;
   // otherwise aborts the process.
   static T& Get() {
-    return address_ == NULL ?
-        internal::BuiltInDefaultValue<T&>::Get() : *address_;
+    return address_ == nullptr ? internal::BuiltInDefaultValue<T&>::Get()
+                               : *address_;
   }
 
  private:
@@ -317,11 +316,11 @@ class DefaultValue<void> {
 
 // Points to the user-set default value for type T.
 template <typename T>
-typename DefaultValue<T>::ValueProducer* DefaultValue<T>::producer_ = NULL;
+typename DefaultValue<T>::ValueProducer* DefaultValue<T>::producer_ = nullptr;
 
 // Points to the user-set default value for type T&.
 template <typename T>
-T* DefaultValue<T&>::address_ = NULL;
+T* DefaultValue<T&>::address_ = nullptr;
 
 // Implement this interface to define an action for function type F.
 template <typename F>
@@ -440,7 +439,7 @@ class Action {
 //     template <typename Result, typename ArgumentTuple>
 //     Result Perform(const ArgumentTuple& args) const {
 //       // Processes the arguments and returns a result, using
-//       // tr1::get<N>(args) to get the N-th (0-based) argument in the tuple.
+//       // std::get<N>(args) to get the N-th (0-based) argument in the tuple.
 //     }
 //     ...
 //   };
@@ -839,7 +838,7 @@ class SetArgumentPointeeAction {
   template <typename Result, typename ArgumentTuple>
   void Perform(const ArgumentTuple& args) const {
     CompileAssertTypesEqual<void, Result>();
-    *::testing::get<N>(args) = value_;
+    *::std::get<N>(args) = value_;
   }
 
  private:
@@ -862,7 +861,7 @@ class SetArgumentPointeeAction<N, Proto, true> {
   template <typename Result, typename ArgumentTuple>
   void Perform(const ArgumentTuple& args) const {
     CompileAssertTypesEqual<void, Result>();
-    ::testing::get<N>(args)->CopyFrom(*proto_);
+    ::std::get<N>(args)->CopyFrom(*proto_);
   }
 
  private:
@@ -1107,8 +1106,9 @@ Action<To>::Action(const Action<From>& from)
 #if GTEST_LANG_CXX11
       fun_(from.fun_),
 #endif
-      impl_(from.impl_ == NULL ? NULL
-                               : new internal::ActionAdaptor<To, From>(from)) {
+      impl_(from.impl_ == nullptr
+                ? nullptr
+                : new internal::ActionAdaptor<To, From>(from)) {
 }
 
 // Creates an action that returns 'value'.  'value' is passed by value
