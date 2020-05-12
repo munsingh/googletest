@@ -17,6 +17,7 @@ before_build:
 - cmd: >-
     @echo off
 
+
     pushd googletest
     	if exist output (
     		rmdir /s /q output
