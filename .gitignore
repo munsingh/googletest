@@ -63,3 +63,6 @@ googlemock/Makefile
 googlemock/cmake_install.cmake
 googlemock/gtest
 
+/googlemock/msvc/2019/.vs/gmock/v16
+/googletest/msvc/2019/.vs/gtest/v16
+/.vs

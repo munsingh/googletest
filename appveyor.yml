@@ -2,7 +2,7 @@ version: 1.8.0.{build}
 branches:
   only:
   - master
-image: Visual Studio 2017
+image: Visual Studio 2019
 configuration:
 - Debug
 - Release
@@ -13,7 +13,7 @@ platform:
 - Win32
 environment: {}
 build:
-  project: googletest\msvc\2017\gtest.sln
+  project: googletest\msvc\2019\gtest.sln
   parallel: true
   verbosity: normal
 artifacts:
