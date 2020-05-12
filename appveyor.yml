@@ -24,7 +24,7 @@ artifacts:
 deploy:
 - provider: GitHub
   tag: release-$(appveyor_build_version)
-  access_token:
+  auth_token:
     secure: ksa5FON923bf535be2ace8ee34ff379af57f3792542d182
   repository: munsingh/googletest
   artifact: googletest_binaries_$(Configuration)_$(Platform)-$(appveyor_build_version),googletest_include-$(appveyor_build_version)
