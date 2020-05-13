@@ -16,7 +16,7 @@ build:
   parallel: true
   verbosity: normal
 test_script:
-  - cmd: 'googletest/output/windows/vs/%PlatformToolset%/%PLATFORM%/%CONFIGURATION%/gtest_unittest.exe --gtest_output="xml:.\gtest_UT_%CONFIGURATION%_%PLATFORM%.xml'
+  - cmd: '%APPVEYOR_BUILD_FOLDER%\googletest\./../output/windows/vs/%PlatformToolset%/%PLATFORM%/%CONFIGURATION%/gtest_unittest.exe --gtest_output="xml:.\gtest_UT_%CONFIGURATION%_%PLATFORM%.xml"'
 on_finish:
 - ps: (new-object net.webclient).UploadFile("https://ci.appveyor.com/api/testresults/junit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path .\gtest_UT_$($env:CONFIGURATION)_$($env:PLATFORM).xml))
 artifacts:
