@@ -6,7 +6,9 @@ max_jobs: 4
 image: Visual Studio 2019
 configuration:
 - Debug
+- Debug_DLL
 - Release
+- Release_DLL
 platform:
 - x64
 - Win32
@@ -17,8 +19,10 @@ build:
   verbosity: normal
 test_script:
 - cmd: '%APPVEYOR_BUILD_FOLDER%\googletest\msvc\2019\./../../output/windows/vs/v142/%PLATFORM%/%CONFIGURATION%/gtest_unittest.exe --gtest_output=xml:.\gtest_UT_%CONFIGURATION%_%PLATFORM%.xml'
+- cmd: '%APPVEYOR_BUILD_FOLDER%\googletest\msvc\2019\./../../output/windows/vs/v142/%PLATFORM%/%CONFIGURATION%/gtest_prod_test.exe --gtest_output=xml:.\gtest_prod_test_%CONFIGURATION%_%PLATFORM%.xml'
 on_finish:
 - ps: (new-object net.webclient).UploadFile("https://ci.appveyor.com/api/testresults/junit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path .\gtest_UT_$($env:CONFIGURATION)_$($env:PLATFORM).xml))
+- ps: (new-object net.webclient).UploadFile("https://ci.appveyor.com/api/testresults/junit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path .\gtest_prod_test_$($env:CONFIGURATION)_$($env:PLATFORM).xml))
 artifacts:
 - path: googletest\output
   name: googletest_binaries_$(Configuration)_$(Platform)-$(appveyor_build_version)
