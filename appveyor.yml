@@ -15,8 +15,14 @@ build:
   project: googletest\msvc\2019\gtest.sln
   parallel: true
   verbosity: normal
-test_script:
-  - cmd: '%APPVEYOR_BUILD_FOLDER%/googletest\msvc\2019\./../../output/windows/vs/%PlatformToolset%/%PLATFORM%/%CONFIGURATION%/gtest_unittest.exe --gtest_output="xml:.\gtest_UT_%CONFIGURATION%_%PLATFORM%.xml'
+before_test:
+- cmd: >-
+
+    @echo off
+    echo APPVEYOR_BUILD_FOLDER: %APPVEYOR_BUILD_FOLDER%
+    echo "Calling %APPVEYOR_BUILD_FOLDER%\googletest\output\windows\vs\%PlatformToolset%\%PLATFORM%\%CONFIGURATION%"
+    dir %APPVEYOR_BUILD_FOLDER%\googletest\output\windows/vs/%PlatformToolset%/%PLATFORM%/%CONFIGURATION%
+
 on_finish:
 - ps: (new-object net.webclient).UploadFile("https://ci.appveyor.com/api/testresults/junit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path .\gtest_UT_$($env:CONFIGURATION)_$($env:PLATFORM).xml))
 artifacts:
