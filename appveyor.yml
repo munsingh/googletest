@@ -11,20 +11,6 @@ platform:
 - x64
 - Win32
 environment: {}
-before_build:
-- cmd: >-
-    @echo off
-
-
-    pushd googletest
-    	if exist output (
-    		rmdir /s /q output
-    	)
-
-    	if exist intermediate (
-    		rmdir /s /q intermediate
-    	)
-    popd
 build:
   project: googletest\msvc\2019\gtest.sln
   parallel: true
