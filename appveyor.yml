@@ -6,9 +6,7 @@ max_jobs: 4
 image: Visual Studio 2019
 configuration:
 - Debug
-- Debug_DLL
 - Release
-- Release_DLL
 platform:
 - x64
 - Win32
