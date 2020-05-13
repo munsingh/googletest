@@ -1,4 +1,4 @@
-version: 1.8.0.{build}
+version: 1.10.0.{build}
 branches:
   only:
   - master
@@ -7,8 +7,6 @@ image: Visual Studio 2019
 configuration:
 - Debug
 - Release
-- Debug_DLL
-- Release_DLL
 platform:
 - x64
 - Win32
@@ -40,7 +38,7 @@ deploy:
 - provider: GitHub
   tag: release-$(appveyor_build_version)
   auth_token:
-    secure: UianiPU61DJyUnD84gcncXrpwZLPQKb3BO4kbQ3cZdSaQ1SeZOvijH6MvGGGcEat
+    secure: FL0q/kJ4tkpO7htGNFPeOMdG3nhWjvNWQ98NtvtWbChJUYL82dpnbokqq91Oga/I
   repository: munsingh/googletest
   artifact: googletest_binaries_$(Configuration)_$(Platform)-$(appveyor_build_version),googletest_include-$(appveyor_build_version)
   draft: false
